@@ -24,4 +24,8 @@ public interface Service {
                 .mapToLong(Period::getYears)
                 .average().orElse(0.0);
     }
+
+    static boolean isPayableUser(User user) {
+        return Period.between(user.getBirthday(), LocalDate.now()).getYears() >= 18;
+    }
 }
