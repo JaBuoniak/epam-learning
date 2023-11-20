@@ -34,6 +34,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        ServiceLoader.load(ServiceImpl.class);
+        ServiceLoader.load(BankImpl.class);
         Application application = new Application();
         menu(application);
     }
