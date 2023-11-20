@@ -8,6 +8,10 @@
     <artifactId>jmp-service-api</artifactId>
     <version>1.0</version>
 
+    <modules>
+        <module>../jmp-dto</module>
+    </modules>
+
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
