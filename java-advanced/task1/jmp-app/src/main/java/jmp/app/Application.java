@@ -1,12 +1,13 @@
 package jmp.app;
 
+import jmp.app.exceptions.SubscriptionNotFoundException;
+import jmp.bank.api.Bank;
+import jmp.cloud.bank.BankImpl;
+import jmp.cloud.service.ServiceImpl;
 import jmp.dto.BankCard;
 import jmp.dto.BankCardType;
 import jmp.dto.Subscription;
 import jmp.dto.User;
-import jmp.bank.api.Bank;
-import jmp.cloud.bank.BankImpl;
-import jmp.cloud.service.ServiceImpl;
 import jmp.service.api.Service;
 
 import java.time.LocalDate;
@@ -46,11 +47,18 @@ public class Application {
             printMenu();
             try {
                 option = scanner.nextInt();
-                switch (option){
-                    case 1: subscribeNewBankCard(application, BankCardType.DEBIT); break;
-                    case 2: subscribeNewBankCard(application, BankCardType.CREDIT); break;
-                    case 3: findSubscription(application); break;
-                    case 0: exit(0);
+                switch (option) {
+                    case 1:
+                        subscribeNewBankCard(application, BankCardType.DEBIT);
+                        break;
+                    case 2:
+                        subscribeNewBankCard(application, BankCardType.CREDIT);
+                        break;
+                    case 3:
+                        findSubscription(application);
+                        break;
+                    case 0:
+                        exit(0);
                 }
             } catch (InputMismatchException ex) {
                 System.out.println("Please enter an integer value between 0 and " + (MENU_OPTIONS.length - 1));
@@ -102,11 +110,14 @@ public class Application {
             return;
         }
 
-        if (cardNumber.matches("[0-9]+")) {
-            Optional<Subscription> subscription = application.service.getSubscriptionByBankCardNumber(cardNumber);
-            subscription.ifPresentOrElse(
-                    s -> System.out.println("\nThe bank card is valid since " + s.getStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE)),
-                    () -> System.out.println("\nCould not found any subscription for provided number."));
+        try {
+            if (cardNumber.matches("[0-9]+")) {
+                Optional<Subscription> optSubscription = application.service.getSubscriptionByBankCardNumber(cardNumber);
+                Subscription subscription = optSubscription.orElseThrow(SubscriptionNotFoundException::new);
+                System.out.println("\nThe bank card is valid since " + subscription.getStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            }
+        } catch (SubscriptionNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
