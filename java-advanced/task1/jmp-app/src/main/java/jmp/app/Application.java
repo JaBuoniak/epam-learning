@@ -12,10 +12,7 @@ import jmp.service.api.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.exit;
 
@@ -24,6 +21,7 @@ public class Application {
             "1- Subscribe new DebitCard",
             "2- Subscribe new CreditCard",
             "3- Find subscription",
+            "4- List subscriptions for period",
             "0- Exit",
     };
 
@@ -57,6 +55,8 @@ public class Application {
                     case 3:
                         findSubscription(application);
                         break;
+                    case 4:
+                        listSubscriptionsForPeriod(application);
                     case 0:
                         exit(0);
                 }
@@ -119,5 +119,31 @@ public class Application {
         } catch (SubscriptionNotFoundException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void listSubscriptionsForPeriod(Application application) {
+        Scanner scanner = new Scanner(System.in);
+        LocalDate start = LocalDate.MIN;
+        LocalDate end = LocalDate.now();
+        try {
+            System.out.println("\n\n\tList subscriptions created in period" +
+                    "\n\nProvide period range:\t");
+            System.out.print("\nStart date (yyyy-mm-dd):\t");
+            start = LocalDate.parse(scanner.next(), DateTimeFormatter.ISO_LOCAL_DATE);
+
+            System.out.print("\nEnd date (yyyy-mm-dd):\t");
+            end = LocalDate.parse(scanner.next(), DateTimeFormatter.ISO_LOCAL_DATE);
+        } catch (Exception e) {
+            System.out.println("Provided data are not valid.\n" + e.getMessage());
+            return;
+        }
+
+        LocalDate finalStart = start;
+        LocalDate finalEnd = end;
+        List<Subscription> subscriptions = application.service.getAllSubscriptionsByCondition(s ->
+                s.getStartDate().isAfter(finalStart) && s.getStartDate().isBefore(finalEnd));
+
+        subscriptions.forEach(s ->
+                System.out.println(s.getBankcard() + "\t" + s.getStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE)));
     }
 }
