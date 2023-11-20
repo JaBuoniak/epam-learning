@@ -8,6 +8,7 @@ import jmp.service.api.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ServiceImpl implements Service {
     private final List<BankCard> cardsRepository;
@@ -31,6 +32,6 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<User> getAllUsers() {
-        return cardsRepository.stream().map(BankCard::getUser).toList();
+        return cardsRepository.stream().map(BankCard::getUser).collect(Collectors.toUnmodifiableList());
     }
 }
