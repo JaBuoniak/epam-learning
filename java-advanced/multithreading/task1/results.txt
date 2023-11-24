@@ -19,3 +19,9 @@ Produced 100000/100000 elements before exception using com.epam.multithreading.t
 It took 23533 ms
 Consuming interval [ms]: 1
 
+
+Java 1.6
+ConcurrentHashMap                        8041 ms
+HashMap with synchronization             7153 ms
+ThreadSafeMap with synchronization      39819 ms
+ThreadSafeMap without synchronization   23536 ms
