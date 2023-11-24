@@ -3,8 +3,8 @@ package com.epam.multithreading.task1;
 import java.util.*;
 
 public class ThreadSafeMap<K,V> implements Map {
-    List<K> keys = new ArrayList<>();
-    List<V> values = new ArrayList<>();
+    List<K> keys = new ArrayList<K>();
+    List<V> values = new ArrayList<V>();
     private int index;
 
     @Override

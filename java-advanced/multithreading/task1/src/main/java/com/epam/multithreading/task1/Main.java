@@ -1,7 +1,5 @@
 package com.epam.multithreading.task1;
 
-import java.time.Clock;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
@@ -9,18 +7,17 @@ public class Main {
     public static void main(String[] args) {
         int productionLimit = 100000;
         int consumingInterval = 1;
-        Map<Integer, Integer> map = new ThreadSafeMap<>();
+        Map<Integer, Integer> map = new ThreadSafeMap<Integer, Integer>();
         Producer producer = new Producer(map, productionLimit);
         Consumer consumer = new Consumer(map, consumingInterval);
 
-        Clock clock = Clock.systemDefaultZone();
-        long start = clock.millis();
+        long start = System.currentTimeMillis();
         producer.start();
         consumer.start();
 
         while (producer.isAlive() && consumer.isAlive());
 
-        long time = clock.millis() - start;
+        long time = System.currentTimeMillis() - start;
         producer.interrupt();
         consumer.interrupt();
         System.out.println("\n\nProduced " + map.size() + "/" + productionLimit + " elements before exception using " + map.getClass().getName());
