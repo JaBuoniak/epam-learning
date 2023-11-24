@@ -19,9 +19,7 @@ public class Producer extends Thread {
         while (counter < limit) {
             int value = random.nextInt() % 100;
             System.out.println("put (" + counter + ", " + value + ")");
-            synchronized (map) {
-                map.put(counter++, value);
-            }
+            map.put(counter++, value);
             if (this.isInterrupted()) {
                 return;
             }

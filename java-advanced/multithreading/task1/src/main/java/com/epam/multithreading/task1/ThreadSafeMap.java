@@ -35,7 +35,7 @@ public class ThreadSafeMap<K,V> implements Map {
 
     @Override
     public Object put(Object key, Object value) {
-            index = keys.indexOf(key);
+            int index = keys.indexOf(key);
             if (index < 0) {
                 index = keys.size();
                 keys.add((K) key);
@@ -50,7 +50,7 @@ public class ThreadSafeMap<K,V> implements Map {
 
     @Override
     public Object remove(Object key) {
-        index = keys.indexOf(key);
+        int index = keys.indexOf(key);
         if (index >= 0) {
             keys.remove(index);
             return values.remove(index);
@@ -79,7 +79,7 @@ public class ThreadSafeMap<K,V> implements Map {
 
     @Override
     public Collection values() {
-        return values;
+        return new ArrayList(values);
     }
 
     @Override
