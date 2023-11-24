@@ -1,15 +1,15 @@
 package com.epam.multithreading.task1;
 
 import java.time.Clock;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
 
     public static void main(String[] args) {
         int productionLimit = 100000;
         int consumingInterval = 1;
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new ConcurrentHashMap<>();
         Producer producer = new Producer(map, productionLimit);
         Consumer consumer = new Consumer(map, consumingInterval);
 

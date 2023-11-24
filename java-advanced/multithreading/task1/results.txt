@@ -1,3 +1,7 @@
 Produced 475/100000 elements before exception using java.util.HashMap
 It took 114 ms
 Consuming interval [ms]: 1
+
+Produced 100000/100000 elements before exception using java.util.concurrent.ConcurrentHashMap
+It took 6413 ms
+Consuming interval [ms]: 1
