@@ -32,3 +32,17 @@ ConcurrentHashMap                        7302 ms
 HashMap with synchronization             7092 ms
 ThreadSafeMap with synchronization      47130 ms
 ThreadSafeMap without synchronization   24839 ms
+
+
+Java 10
+ConcurrentHashMap                        7505 ms
+HashMap with synchronization             7727 ms
+ThreadSafeMap with synchronization      47351 ms
+ThreadSafeMap without synchronization   25563 ms
+
+
+Java 11
+ConcurrentHashMap                        7966 ms
+HashMap with synchronization             7285 ms
+ThreadSafeMap with synchronization      44475 ms
+ThreadSafeMap without synchronization   22406 ms
