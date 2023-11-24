@@ -17,9 +17,12 @@ public class Consumer extends Thread {
     public void run() {
         while (true) {
             try {
-                long sum = map.values().stream().mapToLong(Integer::intValue).sum();
-                System.out.println("sum of " + map.size() + " elements: " + sum);
+                synchronized (map) {
+                    long sum = map.values().stream().mapToLong(Integer::intValue).sum();
+                    System.out.println("sum of " + map.size() + " elements: " + sum);
+                }
             } catch (ConcurrentModificationException e) {
+                System.out.println(e);
                 return;
             }
             try {
