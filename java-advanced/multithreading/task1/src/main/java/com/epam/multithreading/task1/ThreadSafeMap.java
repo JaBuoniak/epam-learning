@@ -79,7 +79,8 @@ public class ThreadSafeMap<K,V> implements Map {
 
     @Override
     public Collection values() {
-        return new ArrayList(values);
+        //return new ArrayList(values);  // without SynchronizedMap
+        return values; // with SynchronizedMap
     }
 
     @Override
