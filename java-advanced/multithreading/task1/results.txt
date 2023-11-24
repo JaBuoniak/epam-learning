@@ -9,3 +9,7 @@ Consuming interval [ms]: 1
 Produced 100000/100000 elements before exception using java.util.Collections$SynchronizedMap
 It took 7301 ms
 Consuming interval [ms]: 1
+
+Produced 100000/100000 elements before exception using com.epam.multithreading.task1.ThreadSafeMap with synchronization
+It took 38659 ms
+Consuming interval [ms]: 1
