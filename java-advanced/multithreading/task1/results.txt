@@ -1,4 +1,3 @@
-Produced 109 elements before exception using java.util.HashMap
-It took 1314 ms
-Producing interval: 10
-Consuming interval: 27
+Produced 475/100000 elements before exception using java.util.HashMap
+It took 114 ms
+Consuming interval [ms]: 1

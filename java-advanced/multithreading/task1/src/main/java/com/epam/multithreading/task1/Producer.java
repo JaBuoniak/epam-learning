@@ -5,27 +5,22 @@ import java.util.Random;
 
 public class Producer extends Thread {
     private final Map<Integer, Integer> map;
-    private int interval;
+    private final int limit;
     private final Random random = new Random();
 
-    public Producer(Map<Integer, Integer> map, int interval) {
+    public Producer(Map<Integer, Integer> map, int limit) {
         this.map = map;
-        this.interval = interval;
+        this.limit = limit;
     }
 
     @Override
     public void run() {
         int counter = 0;
-        while(true) {
-            try {
-                int value = random.nextInt() % 100;
-                System.out.println("put ("+ counter + ", " + value + ")");
-                map.put(counter++, value);
-                sleep(interval);
-            } catch (InterruptedException e) {
-                System.out.println("interrupted");
-                return;
-            }
+        while (counter < limit) {
+            int value = random.nextInt() % 100;
+            System.out.println("put (" + counter + ", " + value + ")");
+            map.put(counter++, value);
+
             if (this.isInterrupted()) {
                 return;
             }
