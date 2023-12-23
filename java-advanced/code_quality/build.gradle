@@ -1,6 +1,17 @@
 plugins {
     id 'java'
     id 'application'
+    id "org.sonarqube" version "4.4.1.3373"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "EPAM-Task001")
+        property("sonar.projectName", "EPAM Task001")
+        property("sonar.host.url", "http://localhost:9000")
+        property("sonar.token", "sqp_2ee7918ee19df315818cfad83518bdf44d336f3d")
+        property("sonar.gradle.skipCompile", true)
+    }
 }
 
 group 'jmp'
