@@ -11,16 +11,15 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface Service {
-    public void subscribe(BankCard bankCard);
+    void subscribe(BankCard bankCard);
 
-    public Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber);
+    Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber);
 
-    public List<User> getAllUsers();
+    List<User> getAllUsers();
 
-    public List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> condition);
+    List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> condition);
 
-    @SuppressWarnings("squid:S1612")
-    public default double getAverageUsersAge() {
+    default double getAverageUsersAge() {
         LocalDate now = LocalDate.now();
         return getAllUsers().stream()
                 .map(user -> user.getBirthday())
@@ -29,7 +28,7 @@ public interface Service {
                 .average().orElse(0.0);
     }
 
-    public static boolean isPayableUser(User user) {
+    static boolean isPayableUser(User user) {
         return Period.between(user.getBirthday(), LocalDate.now()).getYears() >= 18;
     }
 

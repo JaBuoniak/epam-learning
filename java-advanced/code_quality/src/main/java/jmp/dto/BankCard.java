@@ -2,7 +2,6 @@ package jmp.dto;
 
 import java.time.Instant;
 
-@SuppressWarnings("squid:S1124")
 public class BankCard {
     final private String number;
     final private User user;
