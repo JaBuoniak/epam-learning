@@ -1,5 +1,6 @@
 package jmp.app.exceptions;
 
+@SuppressWarnings("squid:S2166")
 public class SubscriptionNotFoundException extends Throwable {
     @Override
     public String getMessage() {

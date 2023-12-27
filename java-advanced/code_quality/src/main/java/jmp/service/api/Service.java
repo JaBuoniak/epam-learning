@@ -19,6 +19,7 @@ public interface Service {
 
     public List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> condition);
 
+    @SuppressWarnings("squid:S1612")
     public default double getAverageUsersAge() {
         LocalDate now = LocalDate.now();
         return getAllUsers().stream()

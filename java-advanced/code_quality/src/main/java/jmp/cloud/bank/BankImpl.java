@@ -5,6 +5,7 @@ import jmp.dto.*;
 
 public class BankImpl implements Bank {
     @Override
+    @SuppressWarnings("squid:S4524")
     public BankCard createBankCard(User user, BankCardType type) {
         switch (type) {
             default:

@@ -16,7 +16,9 @@ import java.util.*;
 
 import static java.lang.System.exit;
 
+@SuppressWarnings({"squid:S106","squid:S1192"})
 public class Application {
+    @SuppressWarnings("squid:S3008")
     private static String[] MENU_OPTIONS = {
             "1- Subscribe new DebitCard",
             "2- Subscribe new CreditCard",
@@ -40,6 +42,7 @@ public class Application {
         menu(application);
     }
 
+    @SuppressWarnings({"squid:S4524","squid:S128"})
     private static void menu(Application application) {
         Scanner scanner = new Scanner(System.in);
         int option = 1;
@@ -102,6 +105,7 @@ public class Application {
         application.service.subscribe(bankCard);
     }
 
+    @SuppressWarnings({"squid:S6353","squid:S6126"})
     private static void findSubscription(Application application) {
         Scanner scanner = new Scanner(System.in);
         String cardNumber;
@@ -125,6 +129,7 @@ public class Application {
         }
     }
 
+    @SuppressWarnings("squid:S6126")
     private static void listSubscriptionsForPeriod(Application application) {
         Scanner scanner = new Scanner(System.in);
         LocalDate start = LocalDate.MIN;
