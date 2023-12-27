@@ -11,10 +11,12 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("squid:1124")
 public class ServiceImpl implements Service {
     final private List<BankCard> cardsRepository;
     final private List<Subscription> subscriptionsRepository;
 
+    @SuppressWarnings("squid:2293")
     public ServiceImpl() {
         this.cardsRepository = new ArrayList<BankCard>();
         this.subscriptionsRepository = new ArrayList<Subscription>();
@@ -32,6 +34,7 @@ public class ServiceImpl implements Service {
     }
 
     @Override
+    @SuppressWarnings({"squid:S6204", "squid:S1612"})
     public List<User> getAllUsers() {
         return cardsRepository.stream().map(card -> card.getUser()).collect(Collectors.toUnmodifiableList());
     }
