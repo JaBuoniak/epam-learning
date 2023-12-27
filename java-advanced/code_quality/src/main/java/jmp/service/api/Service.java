@@ -11,24 +11,24 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface Service {
-    void subscribe(BankCard bankCard);
+    public void subscribe(BankCard bankCard);
 
-    Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber);
+    public Optional<Subscription> getSubscriptionByBankCardNumber(String cardNumber);
 
-    List<User> getAllUsers();
+    public List<User> getAllUsers();
 
-    List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> condition);
+    public List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> condition);
 
-    default double getAverageUsersAge() {
+    public default double getAverageUsersAge() {
         LocalDate now = LocalDate.now();
         return getAllUsers().stream()
-                .map(User::getBirthday)
+                .map(user -> user.getBirthday())
                 .map(birthday -> Period.between(birthday, now))
-                .mapToLong(Period::getYears)
+                .mapToLong(period -> period.getYears())
                 .average().orElse(0.0);
     }
 
-    static boolean isPayableUser(User user) {
+    public static boolean isPayableUser(User user) {
         return Period.between(user.getBirthday(), LocalDate.now()).getYears() >= 18;
     }
 

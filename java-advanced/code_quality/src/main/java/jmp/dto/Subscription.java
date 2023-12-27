@@ -3,8 +3,8 @@ package jmp.dto;
 import java.time.LocalDate;
 
 public class Subscription {
-    private final String bankcard;
-    private final LocalDate startDate;
+    final private String bankcard;
+    final private LocalDate startDate;
 
     public Subscription(String bankcard) {
         this.bankcard = bankcard;

@@ -3,8 +3,8 @@ package jmp.dto;
 import java.time.Instant;
 
 public class BankCard {
-    private final String number;
-    private final User user;
+    final private String number;
+    final private User user;
 
     public BankCard(User user) {
         this.user = user;

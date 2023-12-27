@@ -5,5 +5,5 @@ import jmp.dto.BankCardType;
 import jmp.dto.User;
 
 public interface Bank {
-    BankCard createBankCard(User user, BankCardType type);
+    public BankCard createBankCard(User user, BankCardType type);
 }

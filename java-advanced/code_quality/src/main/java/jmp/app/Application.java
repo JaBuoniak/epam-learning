@@ -48,6 +48,8 @@ public class Application {
             try {
                 option = scanner.nextInt();
                 switch (option) {
+                    default:
+                        continue;
                     case 1:
                         subscribeNewBankCard(application, BankCardType.DEBIT);
                         break;

@@ -12,12 +12,12 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ServiceImpl implements Service {
-    private final List<BankCard> cardsRepository;
-    private final List<Subscription> subscriptionsRepository;
+    final private List<BankCard> cardsRepository;
+    final private List<Subscription> subscriptionsRepository;
 
     public ServiceImpl() {
-        this.cardsRepository = new ArrayList<>();
-        this.subscriptionsRepository = new ArrayList<>();
+        this.cardsRepository = new ArrayList<BankCard>();
+        this.subscriptionsRepository = new ArrayList<Subscription>();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<User> getAllUsers() {
-        return cardsRepository.stream().map(BankCard::getUser).collect(Collectors.toUnmodifiableList());
+        return cardsRepository.stream().map(card -> card.getUser()).collect(Collectors.toUnmodifiableList());
     }
 
     @Override
