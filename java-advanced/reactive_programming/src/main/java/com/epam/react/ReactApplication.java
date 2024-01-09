@@ -1,6 +1,7 @@
 package com.epam.react;
 
 import com.epam.react.client.EmployeeClient;
+import com.epam.react.repository.EmployeesRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,9 +11,13 @@ public class ReactApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(ReactApplication.class, args);
-		EmployeeClient employeeClient = context.getBean(EmployeeClient.class);
+		EmployeeClient client = context.getBean(EmployeeClient.class);
+		EmployeesRepository repository = context.getBean(EmployeesRepository.class);
+
+		client.getEmployees(10, 1)
+				.doOnNext(repository::insert);
 
 		System.out.println(">> results:");
-		employeeClient.getEmployees(10, 1).doOnNext(System.out::println).blockLast();
+		repository.findAll().doOnNext(System.out::println).blockLast();
 	}
 }

@@ -1,0 +1,12 @@
+client:
+  base-url: "https://hub.dummyapis.com"
+
+spring:
+  data:
+    mongodb:
+      database: admin
+      host: localhost
+      port: 27017
+      username: root
+      password: root
+      authentication-database: admin
