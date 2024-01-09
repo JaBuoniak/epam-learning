@@ -10,20 +10,21 @@
 ### (2 Points)
 1. Create data model with following fields:
    ```
-   "id": int, // id of sport
-   "name": string // sport name
+   "id": int, // id of employee
+   "firstName": string // name of employee
+   "lastName": string // surname of employee
+   "age": int // age of employee
    ```
 2. Create Reactive Repository
 3. Create Setup class with following functionality:
-    1. Requests sports from https://sports.api.decathlon.com/sports
+    1. Requests employees from https://dummyapis.com/dummy/employee
     2. Parse Json Response using reactive pipelines and save objects using reactive repository
       
-## Task 2 - API for Sports 
+## Task 2 - API for Employees 
 ### (2 Points)
 1. Implement the following API methods using Router Functions:
    ```
-   - POST /api/v1/sport/{sportname]} // create sport with name. make sure that you correctly cach exceptions if sport with provided name already exist
-   - GET /api/v1/sport?q=... //search sports by name
+   - GET /employee?noofRecords=1000&idStarts=1 //get first 1000 records
    ```
 2. Implement methods in reactive repository with methods to support API above
       
