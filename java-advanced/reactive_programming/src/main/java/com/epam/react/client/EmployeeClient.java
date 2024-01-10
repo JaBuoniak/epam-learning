@@ -22,7 +22,7 @@ public class EmployeeClient {
                                 .queryParam("noofRecords", numberOfRecords)
                                 .queryParam("idStarts", startFrom).build())
                 .exchangeToFlux(response -> response.bodyToFlux(EmployeeJson.class))
-                .map(e -> new Employee(e.getId(), e.getFirstName(), e.getLastName(), e.getAge()))
+                .map(e -> new Employee(e.getFirstName(), e.getLastName(), e.getAge()))
                 .onErrorResume(e -> {
                     log.error("Failed to pull employees for input: (" + numberOfRecords + "," + startFrom, e);
                     return Flux.empty();

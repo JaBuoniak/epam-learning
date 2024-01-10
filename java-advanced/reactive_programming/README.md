@@ -25,6 +25,7 @@
 1. Implement the following API methods using Router Functions:
    ```
    - GET /employee?name=... //search employees by name or surname
+   - POST /addemployee?name={name}&surname={surname}&age={age} //create employee with given data 
    ```
 2. Implement methods in reactive repository with methods to support API above
       

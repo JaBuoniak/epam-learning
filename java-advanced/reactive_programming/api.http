@@ -1,1 +1,2 @@
 http://localhost:8080/employees?name=rnd
+http://localhost:8080/addemployee?name=rnd&surname=rnd&age=rnd

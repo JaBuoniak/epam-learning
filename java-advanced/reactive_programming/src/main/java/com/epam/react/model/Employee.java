@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @RequiredArgsConstructor
 @ToString
 public class Employee {
-    @Id private final int id;
+    @Id private int id;
     private final String firstName;
     private final String lastName;
     private final int age;
