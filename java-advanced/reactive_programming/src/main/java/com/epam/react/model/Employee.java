@@ -13,4 +13,8 @@ public class Employee {
     private final String firstName;
     private final String lastName;
     private final int age;
+
+    public boolean nameContains(String name) {
+        return firstName.contains(name) || lastName.contains(name);
+    }
 }

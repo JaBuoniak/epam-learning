@@ -24,7 +24,7 @@
 ### (2 Points)
 1. Implement the following API methods using Router Functions:
    ```
-   - GET /employee?noofRecords=1000&idStarts=1 //get first 1000 records
+   - GET /employee?name=... //search employees by name or surname
    ```
 2. Implement methods in reactive repository with methods to support API above
       
